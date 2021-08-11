@@ -8,6 +8,8 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { Button } from '@material-ui/core';
+import StarIcon from '@material-ui/icons/Star';
+import "./ShowMovies.css"
 // import { Collapse } from "@material-ui/core";
 
 const useStyles = makeStyles({
@@ -84,7 +86,18 @@ const ShowMovies = () => {
                 >
                   {movie.Year}
                 </Typography>
-                <Button onClick={() => handlerFavorites(movie)}>FAV</Button>
+                
+                <Button variant="contained" id="holis" onClick={() => handlerFavorites(movie)}className={classes.desc}>
+                {/* <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="p"
+                  className={classes.desc}
+                > */}
+                Favoritos 
+                {/* </Typography> */}
+                <StarIcon color="primary"/>
+                </Button>
               </CardContent>
             </Card>
 

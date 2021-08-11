@@ -49,7 +49,14 @@ const initialState = {
           movieTitle: action.payload
         };
     }
-    return state;
+    if(action.type === "DELETE_MOVIE_LIST") {
+        return {
+          ...state,
+          moviesLoaded:action.payload
+        };
+    }
+
+    return state
   }
   
   export default rootReducer;

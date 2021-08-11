@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { sendTitle } from "../../actions/index.js";
+import { deleteMovieList, sendTitle } from "../../actions/index.js";
 import ShowMovies from "../ShowMovies/ShowMovies.jsx";
 import "./Buscador.css";
 
@@ -9,7 +9,7 @@ export default function Buscador() {
   const [title, setTitle] = useState("");
 
   // useEffect(() => {
-  //   dispatch(getMovies(title))
+  //   dispatch(getMovies("fireflies"))
   //   // eslint-disable-next-line
   // }, [dispatch])
 
@@ -23,7 +23,9 @@ export default function Buscador() {
     await dispatch(sendTitle(title));
   };
 
-  
+  const deleteMovies = () => {
+    dispatch(deleteMovieList())
+  }
  
   return (
     <div>
@@ -42,7 +44,9 @@ export default function Buscador() {
               />
             </div>
             <button type="submit">BUSCAR</button>
+            <button onClick={deleteMovies}>Eliminar Búsquedas</button>
           </form>
+
          <ShowMovies/>
     </div>
   );

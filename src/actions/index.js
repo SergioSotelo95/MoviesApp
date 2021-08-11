@@ -19,6 +19,10 @@ export function sendTitle(title) {
   return { type: "SEND_TITLE", payload: title };
 }
 
+export function deleteMovieList() { 
+  return { type: "DELETE_MOVIE_LIST", payload: [] };
+}
+
 export function getMovies(titulo) { // buscador --> avengers
   return function(dispatch) {
     return fetch("http://www.omdbapi.com/?apikey=" + apikey + "&s=" + titulo)
