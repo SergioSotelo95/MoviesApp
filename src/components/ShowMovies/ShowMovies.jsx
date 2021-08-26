@@ -2,14 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addMovieFavorite, getMovies } from "../../actions";
-import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import { Button } from '@material-ui/core';
-import StarIcon from '@material-ui/icons/Star';
-import "./ShowMovies.css"
+import { Button, Grid, makeStyles, TextareaAutosize } from "@material-ui/core";
+import StarIcon from "@material-ui/icons/Star";
+import "./ShowMovies.css";
 // import { Collapse } from "@material-ui/core";
 
 const useStyles = makeStyles({
@@ -20,12 +19,12 @@ const useStyles = makeStyles({
   },
   media: {
     height: 445,
-    width:300,
+    width: 300,
   },
   title: {
     fontFamily: "Nunito",
     fontWeight: "bold",
-    fontSize: "2rem",
+    fontSize: "1rem",
     color: "#fff",
   },
   desc: {
@@ -55,12 +54,12 @@ const ShowMovies = () => {
     }
   };
 
-  const classes = useStyles()
+  const classes = useStyles();
   return (
-    <div>
-      <ul>
-        {movies ? (
-          movies.map((movie) => (
+    <Grid container>
+      {movies.length ? (
+        movies.map((movie) => (
+          <Grid item xs={12} md={6} lg={3}>
             <Card className={classes.root}>
               <Link to={`/movie/${movie.imdbID}`}>
                 <CardMedia
@@ -70,50 +69,46 @@ const ShowMovies = () => {
                 />
               </Link>
               <CardContent>
-                <Typography
+                {/* <Typography
                   gutterBottom
-                  variant="h5"
-                  component="h1"
+                  variant='h5'
+                  component='h1'
                   className={classes.title}
                 >
                   {movie.Title}
-                </Typography>
+                </Typography> */}
+                <TextareaAutosize
+                  maxRows={2}
+                  aria-label='maximum height'
+                  placeholder='Maximum 4 rows'
+                  defaultValue={movie.Title}
+                />
                 <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  component="p"
+                  variant='body2'
+                  color='textSecondary'
+                  component='p'
                   className={classes.desc}
                 >
                   {movie.Year}
                 </Typography>
-                
-                <Button variant="contained" id="holis" onClick={() => handlerFavorites(movie)}className={classes.desc}>
-                {/* <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  component="p"
+
+                <Button
+                  variant='contained'
+                  id='buttonFav'
+                  onClick={() => handlerFavorites(movie)}
                   className={classes.desc}
-                > */}
-                Favoritos 
-                {/* </Typography> */}
-                <StarIcon color="primary"/>
+                >
+                  Favoritos
+                  <StarIcon color='primary' />
                 </Button>
               </CardContent>
             </Card>
-
-            // <div key={movie.imdbID}>
-            //   <img src={movie.Poster} alt="Imágen no encontrada" />
-            //   <Link to={`/movie/${movie.imdbID}`}>
-            //     <span>{movie.Title}</span>
-            //   </Link>
-            //   <button onClick={() => handlerFavorites(movie)}>FAV</button>
-            // </div>
-          ))
-        ) : (
-          <h3> Por favor, busque una película. </h3>
-        )}
-      </ul>
-    </div>
+          </Grid>
+        ))
+      ) : (
+        <h3> Por favor, busque una película. </h3>
+      )}
+    </Grid>
   );
 };
 

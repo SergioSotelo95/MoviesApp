@@ -13,3 +13,8 @@
 .label {
     padding-right: 10px;
 }
+
+#searchBar{
+    color: aliceblue;
+    font-size: larger;
+}

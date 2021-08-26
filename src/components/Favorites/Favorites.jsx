@@ -49,7 +49,7 @@ export default function ConnectedList () {
       <div>
         <h2>Películas Favoritas</h2>
         <div>
-          { movies ? (
+          { movies.length ? (
           movies.map((movie) => (
             <Card className={classes.root}>
               <Link to={`/movie/${movie.imdbID}`}>
@@ -79,7 +79,7 @@ export default function ConnectedList () {
                 <Button onClick={() => dispatch(removeMovieFavorite(movie.imdbID))}>Quitar de Favoritos</Button>
               </CardContent>
             </Card>)))
-            : <h2>Seleccione una película como favorita para verla aquí.</h2>
+            : <p id="noMovies">Seleccione una película como favorita para verla aquí.</p>
           }
         </div>
       </div>
