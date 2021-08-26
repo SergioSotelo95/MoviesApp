@@ -1,7 +1,10 @@
 #buttonFav {
-    background: lemonchiffon!important;
-    color: lightcoral;
+  background: lemonchiffon !important;
+  color: lightcoral;
 }
-h3{
-    color: aliceblue;
+h3 {
+  color: aliceblue;
+  margin: auto;
+  margin-top: 1rem;
+  font-size: x-large;
 }

@@ -9,7 +9,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import { Button } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   title: {
     fontFamily: "Nunito",
     fontWeight: "bold",
-    fontSize: "2rem",
+    fontSize: "1.3rem",
     color: "#fff",
   },
   desc: {
@@ -48,9 +48,10 @@ export default function ConnectedList () {
     return (
       <div>
         <h2>Películas Favoritas</h2>
-        <div>
+        <Grid container>
           { movies.length ? (
           movies.map((movie) => (
+            <Grid item xs={12} md={6} lg={3}>
             <Card className={classes.root}>
               <Link to={`/movie/${movie.imdbID}`}>
                 <CardMedia
@@ -60,14 +61,16 @@ export default function ConnectedList () {
                 />
               </Link>
               <CardContent>
-                <Typography
+              <div id="title">
+                  <Typography
                   gutterBottom
-                  variant="h5"
-                  component="h1"
+                  variant='h5'
+                  component='h1'
                   className={classes.title}
                 >
                   {movie.Title}
                 </Typography>
+                </div>
                 <Typography
                   variant="body2"
                   color="textSecondary"
@@ -76,59 +79,18 @@ export default function ConnectedList () {
                 >
                   {movie.Year}
                 </Typography>
-                <Button onClick={() => dispatch(removeMovieFavorite(movie.imdbID))}>Quitar de Favoritos</Button>
+                <Button id="eliminar" onClick={() => dispatch(removeMovieFavorite(movie.imdbID))}>Quitar de Favoritos</Button>
               </CardContent>
-            </Card>)))
+            </Card>
+            </Grid>)))
             : <p id="noMovies">Seleccione una película como favorita para verla aquí.</p>
           }
-        </div>
+        </Grid>
       </div>
     );
 
 
 }
 
-// export class ConnectedList extends Component {
 
-//   render() {
-//     return (
-//       <div>
-//         <h2>Películas Favoritas</h2>
-//         <ul>
-//           {
-//             this.props.movies && this.props.movies.map(movie => (
-//               <div>
-//                 <Link to={`/movie/${movie.imdbID}`}>
-//                   <span>{movie.Title}</span>
-//                 </Link>
-//                 <button onClick={() => this.props.removeMovieFavorite(movie.imdbID)}>X</button>
-//               </div>
-//             ))
-//           }
-//         </ul>
-//       </div>
-//     );
-//   }
-// }
 
-// function mapStateToProps(state) {
-//   return {
-//     movies: state.moviesFavourites
-//   };
-// }
-
-// // Action Creator --> removeMovieFavorite
-// //
-// // Favourite --> Agregando una prop "asd" --> asd("tt01100")
-// //   --> store.dispatch(removeMovieFavorite("tt01100"))
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     removeMovieFavorite: idMovie => dispatch(removeMovieFavorite(idMovie))
-//   };
-// }
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(ConnectedList);

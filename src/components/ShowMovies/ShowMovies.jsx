@@ -6,9 +6,11 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import { Button, Grid, makeStyles, TextareaAutosize } from "@material-ui/core";
+import { Button, Grid, makeStyles } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import "./ShowMovies.css";
+import swal from 'sweetalert';
+
 // import { Collapse } from "@material-ui/core";
 
 const useStyles = makeStyles({
@@ -24,7 +26,7 @@ const useStyles = makeStyles({
   title: {
     fontFamily: "Nunito",
     fontWeight: "bold",
-    fontSize: "1rem",
+    fontSize: "1.3rem",
     color: "#fff",
   },
   desc: {
@@ -48,11 +50,22 @@ const ShowMovies = () => {
 
   const handlerFavorites = (movie) => {
     if (favorites.find((e) => e.imdbID === movie.imdbID)) {
-      alert("Esa película ya fue agregada a favoritos");
+      swal({
+        title: "ALERTA",
+        text: "Esa película ya fue agregada a favoritos",
+        icon: "warning",
+      });
     } else {
+      swal({
+        title: "OK",
+        text: "Película agregada a favoritos",
+        icon: "success",
+      });
       dispatch(addMovieFavorite(movie));
     }
   };
+
+
 
   const classes = useStyles();
   return (
@@ -69,20 +82,17 @@ const ShowMovies = () => {
                 />
               </Link>
               <CardContent>
-                {/* <Typography
+                <div id="title">
+                  <Typography
                   gutterBottom
                   variant='h5'
                   component='h1'
                   className={classes.title}
                 >
                   {movie.Title}
-                </Typography> */}
-                <TextareaAutosize
-                  maxRows={2}
-                  aria-label='maximum height'
-                  placeholder='Maximum 4 rows'
-                  defaultValue={movie.Title}
-                />
+                </Typography>
+                </div>
+                
                 <Typography
                   variant='body2'
                   color='textSecondary'
@@ -106,7 +116,7 @@ const ShowMovies = () => {
           </Grid>
         ))
       ) : (
-        <h3> Por favor, busque una película. </h3>
+        <h3 > Por favor, busque una película. </h3>
       )}
     </Grid>
   );

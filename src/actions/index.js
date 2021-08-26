@@ -1,4 +1,5 @@
 import dotenv from "dotenv"
+import swal from "sweetalert";
 dotenv.config()
 
 const apikey = process.env.REACT_APP_API
@@ -28,7 +29,17 @@ export function getMovies(titulo) { // buscador --> avengers
     return fetch("http://www.omdbapi.com/?apikey=" + apikey + "&s=" + titulo)
       .then(response => response.json())
       .then(obj => {
-        dispatch({ type: "GET_MOVIES", payload: obj });
+        console.log(`object`, obj)
+        if (obj.Response ==="True") {
+          dispatch({ type: "GET_MOVIES", payload: obj });
+        } else {
+          swal({
+            title: "ERROR",
+            text: "No existen películas con ese título",
+            icon: "error",
+          });
+        }
+        
       });
   };
 }

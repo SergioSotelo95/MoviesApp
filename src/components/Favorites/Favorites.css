@@ -1,12 +1,19 @@
 .cnt {
-    padding-top: 10px;
+  padding-top: 10px;
 }
-h2{
-    color: aliceblue;
+h2 {
+  color: aliceblue;
+  margin-top: 1rem;
+  text-align: center;
 }
-#noMovies{
-    color: aliceblue;
-    font-size: 50px;
-    font-weight: bold;
+#noMovies {
+  color: aliceblue;
+  font-weight: bold;
+  margin: auto;
+  margin-top: 1rem;
+  font-size: 3rem;
 }
-
+#eliminar {
+  background: lemonchiffon !important;
+  color: lightcoral;
+}

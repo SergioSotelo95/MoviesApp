@@ -1,4 +1,4 @@
-import { InputBase } from "@material-ui/core";
+import { Button, InputBase } from "@material-ui/core";
 import { alpha, makeStyles } from "@material-ui/core";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -97,21 +97,10 @@ export default function Buscador() {
   const classes = useStyles();
   return (
 
-    <div>
-          <h2>Buscador</h2>
+    <div >
+          <div id="buscadorContenedor">
           <form className="form-container" onSubmit={handleSubmit}>
-            {/* <div>
-              <label className="label" htmlFor="title">
-                Película:{" "}
-              </label>
-              <input
-                type="text"
-                id="title"
-                autoComplete="off"
-                value={title}
-                onChange={handleChange}
-              />
-            </div> */}
+           
             <div className={classes.search}>
             <div className={classes.searchIcon}>
               <searchIcon />
@@ -129,11 +118,14 @@ export default function Buscador() {
               onChange={handleChange}
             />
           </div>
-            <button type="submit">BUSCAR</button>
-            <button onClick={deleteMovies}>Eliminar Búsquedas</button>
+            <Button id="buscar" type="submit">BUSCAR</Button>
+            <Button id="eliminar" onClick={deleteMovies}>Eliminar</Button>
           </form>
-
-         <ShowMovies/>
+          </div>
+          
+            <ShowMovies/>
+          
+         
     </div>
   );
 }

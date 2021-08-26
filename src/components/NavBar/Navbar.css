@@ -26,22 +26,25 @@
 }
 
 .list-item {
-    margin: 0;
+    margin: auto;
     display: flex;
     height: 100%;
     width: auto;
     align-items: center;
+    
 }
 
 .list-item a {
     color: white;
-    height: 100%;
+    text-decoration: none;
     padding: 16px 10px;
-    border-bottom: 4px solid transparent;
+    font-size: 1.2rem;
+    font-weight: bolder;
 }
 
 .list-item a:hover,
 .list-item a.active {
-    background-color: #808080;
+    background-color: #4d2121;
     color: white;
+    
 }
