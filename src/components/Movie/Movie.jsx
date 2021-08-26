@@ -17,7 +17,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     background: "rgba(0,0,0,0.5)",
-    margin: "20px",
+    //background: "hotpink",
+    marginTop: "80px",
+    margin: "auto",
+    width: "80%",
   },
   details: {
     display: "flex",
@@ -27,54 +30,34 @@ const useStyles = makeStyles((theme) => ({
     flex: "1 0 auto",
     fontFamily: "Nunito",
     fontWeight: "bold",
-    fontSize: "1.3rem",
+    fontSize: "3.5rem",
     color: "#fff",
+        
   },
   cover: {
-    width: 500,
-    height: 650,
+    width: "100%",
+    // height: 800,
+    //height: "auto",
+    //margin:"1.5rem",
+    //padding:"1.5rem",
+    boxSizing:"content-box"
   },
-  controls: {
-    display: "flex",
-    alignItems: "center",
-    paddingLeft: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
+ 
+  info:{
+    lineHeight:"4rem",
+    
   },
-  playIcon: {
-    height: 38,
-    width: 38,
-  },
+  // img:{
+  //   width: "100%",
+  //   height: "100%",
+  // }
 }));
-
-// const useStyles = makeStyles({
-//   root: {
-//     maxWidth: 300,
-//     background: "rgba(0,0,0,0.5)",
-//     margin: "20px",
-//   },
-//   media: {
-//     height: 445,
-//     width: 300,
-//   },
-//   title: {
-//     fontFamily: "Nunito",
-//     fontWeight: "bold",
-//     fontSize: "1.3rem",
-//     color: "#fff",
-//   },
-//   desc: {
-//     fontFamily: "Nunito",
-//     fontSize: "1.1rem",
-//     color: "#ddd",
-//   },
-// });
 
 export default function Movie(props) {
   const idMovie = props.match.params.id;
 
   const dispatch = useDispatch();
   const movieDetail = useSelector((state) => state.movieDetail);
-  const loading = useSelector((state) => state.loading);
 
   useEffect(() => {
     dispatch(getMovieDetail(idMovie));
@@ -83,67 +66,48 @@ export default function Movie(props) {
   const theme = useTheme();
 
   const classes = useStyles();
-  //     return (
-  //         <div className="movie-detail">
-  //         {
-  //           loading ? <h2>Cargando</h2> :
-  //           <div className="title">
-  //             <h2>{movieDetail.Title}</h2>
-  //             <h4>{movieDetail.Year}</h4>
-  //             <h4>{movieDetail.Plot}</h4>
-  //             <h4>{movieDetail.Metascore}</h4>
-  //             <h4>{movieDetail.Genre}</h4>
-  //             <h4>{movieDetail.Rated}</h4>
-  //             <h4>{movieDetail.Runtime}</h4>
-  //             <h4>{movieDetail.Awards}</h4>
-  //             <img src={movieDetail.Poster} alt="Imágen no encontrada" />
-  //           </div>
- 
 
   return (
     <Card className={classes.root}>
-      <CardMedia
+      {/* <div className={classes.img}> */}
+        <CardMedia
         className={classes.cover}
         title={movieDetail.Title}
         image={movieDetail.Poster}
       />
+      {/* </div> */}
+      
       <div className={classes.details}>
         <CardContent className={classes.content}>
-          <Typography component='h5' variant='h5'>
-            Nombre: {movieDetail.Title}
+          <Typography className={classes.info} component='h5' variant='h5'>
+            <b>Nombre:</b> {movieDetail.Title}
           </Typography>
-          <Typography component='h5' variant='h5'>
-            Año: {movieDetail.Year}
+          <Typography className={classes.info} component='h5' variant='h5'>
+            <b>Año:</b> {movieDetail.Year}
           </Typography>
-          <Typography component='h5' variant='h5'>
-            Puntuación: {movieDetail.Metascore}
+          <Typography className={classes.info}component='h5' variant='h5'>
+            <b>Puntuación:</b> {movieDetail.Metascore}
           </Typography>
-          <Typography component='h5' variant='h5'>
-            Género: {movieDetail.Genre}
+          <Typography className={classes.info}component='h5' variant='h5'>
+            <b>Género:</b> {movieDetail.Genre}
           </Typography>
-          <Typography component='h5' variant='h5'>
-            Sinopsis: {movieDetail.Plot}
+          <Typography className={classes.info}component='h5' variant='h5'>
+            <b>Sinopsis:</b> {movieDetail.Plot}
           </Typography>
-          <Typography component='h5' variant='h5'>
-            Premios: {movieDetail.Awards}
+          <Typography className={classes.info}component='h5' variant='h5'>
+            <b>Premios:</b> {movieDetail.Awards}
           </Typography>
-          <Typography component='h5' variant='h5'>
-            Duración: {movieDetail.Runtime}
+          <Typography className={classes.info}component='h5' variant='h5'>
+            <b>Duración:</b> {movieDetail.Runtime}
           </Typography>
-          <Typography component='h5' variant='h5'>
-            Elenco: {movieDetail.Actors}
+          <Typography className={classes.info}component='h5' variant='h5'>
+            <b>Elenco:</b> {movieDetail.Actors}
           </Typography>
-          <Typography component='h5' variant='h5'>
-            Director: {movieDetail.Director}
+          <Typography className={classes.info}component='h5' variant='h5'>
+            <b>Director:</b> {movieDetail.Director}
           </Typography>
         </CardContent>
-        <div className={classes.controls}>
-          <IconButton aria-label='previous'>
-            {theme.direction === "rtl"}
-          </IconButton>
-          <IconButton aria-label='play/pause'></IconButton>
-          <IconButton aria-label='next'>{theme.direction === "rtl"}</IconButton>
-        </div>
+        
       </div>
     </Card>
   );
