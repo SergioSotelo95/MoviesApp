@@ -3,7 +3,7 @@ const initialState = {
     moviesLoaded: [],
     movieDetail: {},
     movieTitle:"",
-    loading: false
+    loading: true
   };
   
   function rootReducer(state = initialState, action) {

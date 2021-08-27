@@ -3,6 +3,7 @@ import React from "react";
 import Favorites from "./components/Favorites/Favorites.jsx";
 import Buscador from "./components/Buscador/Buscador.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 import { Route } from "react-router-dom";
 import Movie from "./components/Movie/Movie.jsx";
 import { makeStyles } from "@material-ui/core/styles";
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/" component={Buscador} />
           <Route path="/favs" component={Favorites} />
           <Route path="/movie/:id" component={Movie} />
+          <Footer/>
       </div>
   );
 }

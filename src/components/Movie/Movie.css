@@ -58,5 +58,18 @@
   display: flex;
   flex-direction: row;
 }
+#spinnerBox{
+  display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 80vh;
+}
+#spinner{
+  /* reemplazar color spinner */
+ color: rgba(235, 48, 61, 0.6);
+ font-size:150px;
+ margin: auto;
+ 
+}
 
 
