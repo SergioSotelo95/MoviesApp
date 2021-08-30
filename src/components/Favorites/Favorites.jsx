@@ -37,7 +37,9 @@ const useStyles = makeStyles({
 export default function ConnectedList () {
 
     const dispatch = useDispatch();
-    const movies = useSelector(state => state.moviesFavourites);
+    const moviesR= useSelector(state => state.moviesFavourites)
+    const movies = localStorage.getItem("fav")? localStorage.getItem("fav"):moviesR;
+
 
     useEffect(() => {
       dispatch(getMovieFavorite());

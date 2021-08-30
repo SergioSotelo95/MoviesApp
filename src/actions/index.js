@@ -6,6 +6,7 @@ const apikey = process.env.REACT_APP_API;
 
 export function addMovieFavorite(payload) {
   // payload --> obj que representa una movie
+  
   return { type: "ADD_MOVIE_FAVORITE", payload };
 }
 

@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import { Button, Grid, makeStyles } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import "./ShowMovies.css";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 // import { Collapse } from "@material-ui/core";
 
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   root: {
     maxWidth: 300,
     background: "rgba(0,0,0,0.5)",
-    margin: "20px",
+    margin: "40px",
   },
   media: {
     height: 445,
@@ -33,6 +33,11 @@ const useStyles = makeStyles({
     fontFamily: "Nunito",
     fontSize: "1.1rem",
     color: "#ddd",
+  },
+  responsive: {
+    display: "flex",
+    justifyContent: "center",
+    marginBottom:"3rem",
   },
 });
 
@@ -65,14 +70,12 @@ const ShowMovies = () => {
     }
   };
 
-
-
   const classes = useStyles();
   return (
-    <Grid container>
+    <Grid container className={classes.container}>
       {movies.length ? (
         movies.map((movie) => (
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} md={6} lg={3} className={classes.responsive}>
             <Card className={classes.root}>
               <Link to={`/movie/${movie.imdbID}`}>
                 <CardMedia
@@ -82,17 +85,17 @@ const ShowMovies = () => {
                 />
               </Link>
               <CardContent>
-                <div id="title">
+                <div id='title'>
                   <Typography
-                  gutterBottom
-                  variant='h5'
-                  component='h1'
-                  className={classes.title}
-                >
-                  {movie.Title}
-                </Typography>
+                    gutterBottom
+                    variant='h5'
+                    component='h1'
+                    className={classes.title}
+                  >
+                    {movie.Title}
+                  </Typography>
                 </div>
-                
+
                 <Typography
                   variant='body2'
                   color='textSecondary'
@@ -116,7 +119,7 @@ const ShowMovies = () => {
           </Grid>
         ))
       ) : (
-        <h3 > Por favor, busque una película. </h3>
+        <h3> Por favor, busque una película. </h3>
       )}
     </Grid>
   );

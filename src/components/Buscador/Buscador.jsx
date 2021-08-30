@@ -75,10 +75,7 @@ export default function Buscador() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
  
-  // useEffect(() => {
-  //   dispatch(getMovies("fireflies"))
-  //   // eslint-disable-next-line
-  // }, [dispatch])
+  
 
   const handleChange = (e) => {
     setTitle(e.target.value);
@@ -92,6 +89,7 @@ export default function Buscador() {
 
   const deleteMovies = () => {
     dispatch(deleteMovieList())
+    setTitle("")
   }
  
   const classes = useStyles();
