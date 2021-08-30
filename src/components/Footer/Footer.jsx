@@ -1,7 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Logo from "../../img/clapperboard.png";
-
 import "./Footer.css";
 
 export default function Footer() {

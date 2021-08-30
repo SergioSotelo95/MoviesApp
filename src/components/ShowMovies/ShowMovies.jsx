@@ -56,13 +56,13 @@ const ShowMovies = () => {
   const handlerFavorites = (movie) => {
     if (favorites.find((e) => e.imdbID === movie.imdbID)) {
       swal({
-        title: "ALERTA",
+        title: "Favoritos",
         text: "Esa película ya fue agregada a favoritos",
         icon: "warning",
       });
     } else {
       swal({
-        title: "OK",
+        title: "Favoritos",
         text: "Película agregada a favoritos",
         icon: "success",
       });

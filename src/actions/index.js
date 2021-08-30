@@ -39,7 +39,7 @@ export function getMovies(titulo) {
           dispatch({ type: "GET_MOVIES", payload: obj });
         } else {
           swal({
-            title: "ERROR",
+            title: "Error",
             text: "No existen películas con ese título",
             icon: "error",
           });

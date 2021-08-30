@@ -2,17 +2,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovieDetail } from "../../actions/index";
 import {
-  useTheme,
   Card,
   CardContent,
-  CardMedia,
-  Grid,
   makeStyles,
   Typography,
 } from "@material-ui/core";
 import "./Movie.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {  faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,8 +59,6 @@ export default function Movie(props) {
   useEffect(() => {
     dispatch(getMovieDetail(idMovie));
   }, [dispatch, idMovie]);
-
-  const theme = useTheme();
 
   const classes = useStyles();
 
